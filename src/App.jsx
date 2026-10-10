@@ -4,20 +4,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Inicio from './pages/Inicio';
-import Laptop from './pages/Laptop';
-import Movil from './pages/Movil';
 import Error404 from './pages/Error404';
-import Franelas from './pages/Franelas';
-import Perfumes from './pages/Perfumes';
-import Equipamento from './pages/Equipamento';
-import Groceries from './pages/Groceries';
-import Moto from './pages/Moto';
+import Categorias from './pages/Categorias';
+import Detalle from './pages/Detalle';
+import ScrollToTop from './components/ScrollToTop';
 
 
 // 🟢 FASE 1: Maqueta base limpia sin dependencias de router. Cero errores.
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
         {/* 1. Barra de navegación fija */}
         <Header />
@@ -28,13 +25,17 @@ const App = () => {
           <Routes>
 
             <Route path ='/' element={<Inicio/>}  />
-            <Route path='/laptops' element={<Laptop/>}/>
-            <Route path='/movil' element={<Movil/>}/>
-            <Route path='/franelas' element={<Franelas/>}/>
-            <Route path='/perfumes' element={<Perfumes/>}/>
-            <Route path='/equipamento' element={<Equipamento/>}/>
-            <Route path='/groseries' element={<Groceries/>}/>
-            <Route path='/moto' element={<Moto/>}/>
+
+
+             {/* 🚀 RUTA DINÁMICA: Categoría universal */}
+            {/* :slug atiende laptops, smartphones, fragrances... ¡sin duplicar archivos! */}
+            <Route path="/categoria/:slug" element={<Categorias />} />
+
+            {/* 🚀 NUEVA RUTA DINÁMICA: Ficha de producto individual (:id) */}
+            <Route path="/detalle/:id" element={<Detalle />} />
+      
+
+
             <Route path='*' element={<Error404/>}/>
 
           </Routes>

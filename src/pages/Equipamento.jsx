@@ -58,7 +58,7 @@ const Equipamento = () => {
           Catálogo Oficial
         </span>
         <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
-          Laptops & Computación ({datos.length})
+          Accesorios Deportivos ({datos.length})
         </h1>
         <p className="text-sm text-slate-400 mt-1">
           Productos obtenidos en vivo desde /products/category/laptops.
